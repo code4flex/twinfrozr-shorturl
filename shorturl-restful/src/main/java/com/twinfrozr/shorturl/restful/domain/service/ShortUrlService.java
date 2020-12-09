@@ -4,8 +4,8 @@ import com.twinfrozr.shorturl.common.Validator.Validator;
 import com.twinfrozr.shorturl.common.config.ShorturlConfig;
 import com.twinfrozr.shorturl.common.exception.constants.CustomerErrorConstants;
 import com.twinfrozr.shorturl.common.utils.StringUtils;
-import com.twinfrozr.shorturl.restful.controller.command.GenType;
-import com.twinfrozr.shorturl.restful.controller.command.UrlCommand;
+import com.twinfrozr.shorturl.restful.controller.vo.GenType;
+import com.twinfrozr.shorturl.restful.controller.vo.UrlVo;
 import com.twinfrozr.shorturl.restful.domain.Context;
 import com.twinfrozr.shorturl.restful.domain.IShortUrlService;
 import com.twinfrozr.shorturl.restful.domain.event.MaxShortUrl;
@@ -41,26 +41,26 @@ public class ShortUrlService implements IShortUrlService {
     /**
      * 生成短链
      *
-     * @param command
+     * @param urlVo
      * @return
      */
-    public String genUrl(UrlCommand command){
+    public String genUrl(UrlVo urlVo){
 
-        Validator.notNull(command, CustomerErrorConstants.PARMS_ERROR);
-        Validator.notEmpty(command.getUrl(), CustomerErrorConstants.SHORTURL_REQUEST_URL_EMPTY);
+        Validator.notEmpty(urlVo.getUrl(), CustomerErrorConstants.SHORTURL_REQUEST_URL_EMPTY);
+        Validator.notNull(urlVo.getType(),CustomerErrorConstants.SHORTURL_REQUEST_TYPE_IS_NULL);
 
         String tmpCode = StringUtils.EMPTY;
-        if(GenType.MIN == command.getType()){
+        if(GenType.MIN == urlVo.getType()){
             Context<String> context = new Context<String>(new MinShortUrl());
-            tmpCode = context.genUrl(command.getUrl());
+            tmpCode = context.genUrl(urlVo.getUrl());
         }
-        if(GenType.MAX == command.getType()){
+        if(GenType.MAX == urlVo.getType()){
             Context<String> context = new Context<String>(new MaxShortUrl());
-            tmpCode = context.genUrl(command.getUrl());
+            tmpCode = context.genUrl(urlVo.getUrl());
         }
 
         if(linkShortUrlService.existShortUrl(tmpCode)<1) {
-            linkShortUrlService.addLinkShortUrl(command.getUrl(),tmpCode);
+            linkShortUrlService.addLinkShortUrl(urlVo.getUrl(),tmpCode);
         }
 
         return ShorturlConfig.getShortPre() +"a/"+tmpCode;

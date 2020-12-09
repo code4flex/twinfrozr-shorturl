@@ -1,6 +1,6 @@
 package com.twinfrozr.shorturl.restful.domain;
 
-import com.twinfrozr.shorturl.restful.controller.command.UrlCommand;
+import com.twinfrozr.shorturl.restful.controller.vo.UrlVo;
 
 public interface IShortUrlService {
 
@@ -14,8 +14,8 @@ public interface IShortUrlService {
     /**
      * 生成短链
      *
-     * @param command
+     * @param urlVo
      * @return
      */
-    public String genUrl(UrlCommand command);
+    public String genUrl(UrlVo urlVo);
 }

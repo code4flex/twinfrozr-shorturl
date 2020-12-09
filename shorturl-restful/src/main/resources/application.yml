@@ -1,7 +1,10 @@
 # env config
 shorturl:
+  # 名称
   name: shorturl
+  # 版本
   version: 0.3.6
+  # 短链
   shortPre: http://localhost:8081/
 
 server:
@@ -11,11 +14,11 @@ server:
     # 应用的访问路径
     context-path: /
   tomcat:
-    # tomcat的URI编码
+    # URI编码
     uri-encoding: UTF-8
-    # tomcat最大线程数，默认为200
+    # 最大线程数，默认为200
     max-threads: 800
-    # Tomcat启动初始化的线程数，默认值25
+    # 启动初始化的线程数，默认值25
     min-spare-threads: 30
 
 logging:
@@ -45,6 +48,11 @@ mybatis:
     # 全局配置文件
     configLocation: classpath:mybatis/mybatis-config.xml
 
+# Swagger
+swagger:
+  # 开关
+  enabled: true
+
 # XSS攻击
 xss: 
   # 开关
@@ -52,4 +60,4 @@ xss:
   # 排除链接（多个用逗号分隔）
   excludes: /system/*
   # 匹配链接
-  urlPatterns: /urls*
+  urlPatterns: /urls,/a/*

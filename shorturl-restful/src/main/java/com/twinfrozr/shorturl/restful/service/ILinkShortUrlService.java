@@ -1,7 +1,6 @@
 package com.twinfrozr.shorturl.restful.service;
 
 
-import com.twinfrozr.shorturl.restful.controller.command.GenType;
 import com.twinfrozr.shorturl.restful.domain.entity.LinkShortUrl;
 
 /**

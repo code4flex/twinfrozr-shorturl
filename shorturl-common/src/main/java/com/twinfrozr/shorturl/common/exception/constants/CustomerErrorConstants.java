@@ -14,6 +14,7 @@ public enum  CustomerErrorConstants implements LocalError {
     SHORTURL_REQUEST_URL_EMPTY("210130","URL 不可为空"),
     SHORTURL_REQUEST_DECODE_EMPTY("2101301","链接 不可为空"),
     SHORTURL_REQUEST_DECODE_NOT_EXIST("2101302","链接 无法访问"),
+    SHORTURL_REQUEST_TYPE_IS_NULL("2101303","转换类型枚举不可为空"),
 
     PARMS_ERROR("888888","参数错误"),
     OTHER_ERROR("999999","其他错误");
