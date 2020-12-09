@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- Globally enables or disables any caches configured in any mapper under this configuration.	-->
+		<setting name="cacheEnabled" value="true"  />
+		<!-- Allows JDBC support for generated keys. -->
+		<setting name="useGeneratedKeys" value="true"  />
+		<!-- Configures the default executor.  -->
+		<setting name="defaultExecutorType" value="REUSE" />
+		<!-- Specifies which logging implementation MyBatis should use. -->
+		<setting name="logImpl" value="SLF4J" />
+		<!-- Enables automatic mapping from classic database column names A_COLUMN to camel case classic Java property names aColumn. -->
+		<setting name="mapUnderscoreToCamelCase" value="false"/>
+	</settings>
+</configuration>

@@ -1,0 +1,55 @@
+# env config
+shorturl:
+  name: shorturl
+  version: 0.3.6
+  shortPre: http://localhost:8081/
+
+server:
+  # 端口
+  port: 8081
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+
+logging:
+  level:
+    com.twinfrozr: debug
+    org.springframework: warn
+
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles: 
+    active: druid
+
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+# MyBatis
+mybatis:
+    # 检索指定包别名
+    typeAliasesPackage: com.twinfrozr.shorturl.**.domain.entity
+    # mapper xml映射文件
+    mapperLocations: classpath*:mapper/**/*Mapper.xml
+    # 全局配置文件
+    configLocation: classpath:mybatis/mybatis-config.xml
+
+# XSS攻击
+xss: 
+  # 开关
+  enabled: true
+  # 排除链接（多个用逗号分隔）
+  excludes: /system/*
+  # 匹配链接
+  urlPatterns: /urls*

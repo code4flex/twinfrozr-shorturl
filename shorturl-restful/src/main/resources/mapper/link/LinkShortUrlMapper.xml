@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.twinfrozr.shorturl.restful.mapper.LinkShortUrlMapper">
+    
+    <resultMap type="LinkShortUrl" id="LinkShortUrlResult">
+        <result property="id"    column="id"    />
+        <result property="lUrl"    column="l_url"    />
+        <result property="sUrl"    column="s_url"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectLinkShortUrlVo">
+        select id, l_url, s_url, create_time from link_short_url
+    </sql>
+
+    <select id="selectLinkShortUrlById" parameterType="Long" resultMap="LinkShortUrlResult">
+        <include refid="selectLinkShortUrlVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectLinkShortUrlBySUrl" parameterType="String" resultMap="LinkShortUrlResult">
+        <include refid="selectLinkShortUrlVo"/>
+        where s_url = #{surl}
+    </select>
+
+    <select id="selectLinkShortUrlByExist" parameterType="String" resultType="java.lang.Integer">
+        select count(*) from link_short_url
+        where s_url = #{surl}
+    </select>
+        
+    <insert id="insertLinkShortUrl" parameterType="LinkShortUrl" useGeneratedKeys="true" keyProperty="id">
+        insert into link_short_url
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="lUrl != null">l_url,</if>
+            <if test="sUrl != null">s_url,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="lUrl != null">#{lUrl},</if>
+            <if test="sUrl != null">#{sUrl},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+</mapper>
