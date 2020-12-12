@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.twinfrozr.shorturl.restful.mapper.LogRecordMapper">
+
+    <insert id="insertLogRecord" parameterType="LogRecord" useGeneratedKeys="true" keyProperty="id">
+        insert into log_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ip != null">ip,</if>
+            <if test="location != null">location,</if>
+            <if test="browser != null">browser,</if>
+            <if test="os != null">os,</if>
+            <if test="url != null">url,</if>
+            <if test="sUrl != null">s_url,</if>
+            <if test="createTime != null">create_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ip != null">#{ip},</if>
+            <if test="location != null">#{location},</if>
+            <if test="browser != null">#{browser},</if>
+            <if test="os != null">#{os},</if>
+            <if test="url != null">#{url},</if>
+            <if test="sUrl != null">#{sUrl},</if>
+            <if test="createTime != null">#{createTime},</if>
+        </trim>
+    </insert>
+
+</mapper>

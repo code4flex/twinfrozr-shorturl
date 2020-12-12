@@ -5,14 +5,13 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * 短链接对象 link_short_url
- * 
+ *
  * @author marvin
  * @date 2020-2-04
  */
-public class LinkShortUrl
+public class LinkShortUrl extends BaseEntity
 {
-    private static final long serialVersionUID = -4373942421064284274L;
-
+    private static final long serialVersionUID = 3440882990711640377L;
     /** id */
     private Long id;
 
@@ -22,26 +21,21 @@ public class LinkShortUrl
     /** 短地址 */
     private String sUrl;
 
-    /**
-     * 创建时间
-     */
-    private int createTime;
-
-    public void setId(Long id) 
+    public void setId(Long id)
     {
         this.id = id;
     }
 
-    public Long getId() 
+    public Long getId()
     {
         return id;
     }
-    public void setlUrl(String lUrl) 
+    public void setlUrl(String lUrl)
     {
         this.lUrl = lUrl;
     }
 
-    public String getlUrl() 
+    public String getlUrl()
     {
         return lUrl;
     }
@@ -51,18 +45,11 @@ public class LinkShortUrl
         this.sUrl = sUrl;
     }
 
-    public String getsUrl() 
+    public String getsUrl()
     {
         return sUrl;
     }
 
-    public int getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(int createTime) {
-        this.createTime = createTime;
-    }
 
     @Override
     public String toString() {

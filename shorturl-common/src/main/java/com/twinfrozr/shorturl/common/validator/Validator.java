@@ -1,4 +1,4 @@
-package com.twinfrozr.shorturl.common.Validator;
+package com.twinfrozr.shorturl.common.validator;
 
 import java.util.Collection;
 

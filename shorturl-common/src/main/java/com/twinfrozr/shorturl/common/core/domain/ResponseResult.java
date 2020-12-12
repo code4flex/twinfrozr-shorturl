@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class ResponseResult extends HashMap<String, Object>
 {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2369544211843793817L;
 
     /** 状态码 */
     public static final String CODE_TAG = "code";

@@ -24,6 +24,7 @@
         <swagger.models>1.5.21</swagger.models>
         <guava.version>20.0</guava.version>
         <mybatis.boot.version>2.1.3</mybatis.boot.version>
+        <bitwalker.version>1.19</bitwalker.version>
         <shorturl.common.version>0.3.6</shorturl.common.version>
     </properties>
 
@@ -113,6 +114,13 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${bitwalker.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.twinfrozr.shorturl</groupId>
                 <artifactId>shorturl-common</artifactId>
@@ -124,9 +132,10 @@
     <modules>
         <module>shorturl-restful</module>
         <module>shorturl-common</module>
+        <module>shorturl-shared</module>
     </modules>
-    <packaging>pom</packaging>
 
+    <packaging>pom</packaging>
 
     <dependencies>
 

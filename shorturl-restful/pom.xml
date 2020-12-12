@@ -44,12 +44,14 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.twinfrozr.shorturl</groupId>
             <artifactId>shorturl-common</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

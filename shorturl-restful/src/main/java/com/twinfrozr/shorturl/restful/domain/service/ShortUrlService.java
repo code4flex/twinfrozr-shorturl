@@ -1,6 +1,6 @@
 package com.twinfrozr.shorturl.restful.domain.service;
 
-import com.twinfrozr.shorturl.common.Validator.Validator;
+import com.twinfrozr.shorturl.common.validator.Validator;
 import com.twinfrozr.shorturl.common.config.ShorturlConfig;
 import com.twinfrozr.shorturl.common.exception.constants.CustomerErrorConstants;
 import com.twinfrozr.shorturl.common.utils.StringUtils;

@@ -1,5 +1,12 @@
 package com.twinfrozr.shorturl.common.utils;
 
+import com.twinfrozr.shorturl.common.constant.Constants;
+import com.twinfrozr.shorturl.common.http.HttpUtils;
+import com.twinfrozr.shorturl.common.json.JSONObject;
+import com.twinfrozr.shorturl.common.json.JSONUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -11,6 +18,39 @@ import java.net.UnknownHostException;
  */
 public class IpUtils
 {
+    private static final Logger logger = LoggerFactory.getLogger(IpUtils.class);
+    // IP地址查询
+    public static final String IP_URL = "http://whois.pconline.com.cn/ipJson.jsp";
+
+    // 未知地址
+    public static final String UNKNOWN = "XX XX";
+
+    /**
+     * 根据ip地址获取定位信息
+     * @param ip
+     * @return
+     */
+    public static String getLocation(String ip)
+    {
+        String location = UNKNOWN;
+        if (internalIp(ip)) {
+            return "内网IP";
+        }
+        try {
+            String jsonStr = HttpUtils.sendGet(IP_URL, "ip=" + ip + "&json=true", Constants.GBK);
+            if (StringUtils.isEmpty(jsonStr)) {
+                logger.error("获取地理位置异常 {}", ip);
+                return UNKNOWN;
+            }
+            IpInfo ipInfo = JSONUtils.toObject(jsonStr,IpInfo.class);
+            return String.format("%s %s", ipInfo.getPro(), ipInfo.getCity());
+        }
+        catch (Exception e) {
+            logger.error("获取地理位置异常 {}", e);
+        }
+        return location;
+    }
+
     public static String getIpAddr(HttpServletRequest request)
     {
         if (request == null)

@@ -70,8 +70,6 @@ public class DataScopeAspect
         {
             return;
         }
-        // 获取当前的用户
-
     }
 
     /**
